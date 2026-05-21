@@ -1,7 +1,7 @@
 const selectedCountries = [];
 const MAX_COMPARE = 4;
 const API_BASE = "https://restcountries.com/v3.1";
-const TIMEOUT_MS = 8000; // 8 second timeout
+const TIMEOUT_MS = 8000;
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const compareBtn = document.getElementById("compareBtn");
@@ -18,25 +18,20 @@ function showError(msg) {
   errorEl.textContent = msg;
   errorEl.classList.remove("hidden");
 }
-
 function hideError() {
   errorEl.classList.add("hidden");
 }
-
 function showLoading() {
   loadingEl.classList.remove("hidden");
   resultsEl.innerHTML = "";
 }
-
 function hideLoading() {
   loadingEl.classList.add("hidden");
 }
-
 // Wrap fetch with a timeout so the app doesn't hang if the API is slow
 async function fetchWithTimeout(url, ms = TIMEOUT_MS) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), ms);
-
   try {
     const res = await fetch(url, { signal: controller.signal });
     clearTimeout(timer);
@@ -67,7 +62,6 @@ function getCurrencies(country) {
 }
 
 // -- Search --
-
 async function searchCountries(query) {
   // Basic input validation
   const trimmed = query.trim();
@@ -79,10 +73,8 @@ async function searchCountries(query) {
     showError("Search term must be at least 2 characters.");
     return;
   }
-
   hideError();
   showLoading();
-
   let data;
   try {
     const res = await fetchWithTimeout(`${API_BASE}/name/${encodeURIComponent(trimmed)}`);
@@ -96,7 +88,6 @@ async function searchCountries(query) {
       showError(`API error (status ${res.status}). Please try again.`);
       return;
     }
-
     data = await res.json();
   } catch (err) {
     hideLoading();
@@ -124,7 +115,6 @@ function renderCards(countries) {
     resultsEl.appendChild(card);
   });
 }
-
 function buildCard(country) {
   const name = country.name.common;
   const capital = country.capital ? country.capital[0] : "N/A";
@@ -134,7 +124,6 @@ function buildCard(country) {
 
   const card = document.createElement("div");
   card.className = "card";
-
   const isSelected = selectedCountries.some((c) => c.name.common === name);
 
   card.innerHTML = `
@@ -156,12 +145,10 @@ function buildCard(country) {
 
   const btn = card.querySelector(".compare-toggle");
   btn.addEventListener("click", () => toggleCompare(country, btn));
-
   return card;
 }
 
 // --- Compare logic --
-
 function toggleCompare(country, btn) {
   const name = country.name.common;
   const idx = selectedCountries.findIndex((c) => c.name.common === name);
@@ -228,7 +215,6 @@ clearCompareBtn.addEventListener("click", () => {
   selectedCountries.length = 0;
   compareBtn.textContent = "Compare (0)";
   comparePanel.classList.add("hidden");
-  // Reset any "Added" buttons on cards
   document.querySelectorAll(".compare-toggle.selected").forEach((btn) => {
     btn.textContent = "+ Compare";
     btn.classList.remove("selected");
@@ -244,6 +230,6 @@ searchInput.addEventListener("keydown", (e) => {
     searchCountries(searchInput.value);
   }
 });
-// --- Load a default on startup so the page isn't empty ---
+// - Load a default on startup so the page isn't empty -
 searchInput.value = "india";
 searchCountries("india");
