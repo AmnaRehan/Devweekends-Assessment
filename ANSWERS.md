@@ -7,12 +7,16 @@ If you want a local server (avoids any browser CORS warnings):
 python3 -m http.server 8080
 # then visit http://localhost:8080
 ```
+
 No API key. No dependencies to install. The REST Countries API is free and open.
 ---
+
 ## 2. Stack Choice
+
 Plain HTML, CSS, and vanilla JavaScript, no framework, no build step.
 I chose this because the task is essentially: take user input -> call an API -> display data. That doesn't need React or a bundler. Adding those would just mean more setup for whoever runs it, and more moving parts for something this size.
 A worse choice would have been a backend framework like Express or Flask. There's no reason to run a server for this,everything happens in the browser. It would also mean whoever runs it needs Node or Python set up and has to remember to start the server first, which is extra friction for no gain.
+
 ---
 ## 3. One Real Edge Case
 Slow or hanging API request — handled with a timeout.
@@ -35,6 +39,7 @@ I consulted Claude (claude.ai) for some explanations during this project.
 - Asked it to structure my readme file for better understanding of project structure
 
 **What I changed:**
+
 The original timeout code the AI suggested threw a generic `Error("Timeout")`. I changed the error message to something user-facing: *"Request timed out. The API might be slow. try again."* The AI's version was fine for a dev console but not something you'd show a user directly. I also moved the `clearTimeout(timer)` call to run on both success and failure paths, the original only cleared it on success, which would leave a dangling timer if the fetch failed for a non-timeout reason. It also gave me representation of project structure to put in readme.
 ---
 
