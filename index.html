@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Country Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1> Country Explorer</h1>
+    <p class="subtitle">Search and compare countries using live data</p>
+  </header>
+
+  <main>
+    <section class="search-area">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for a country..."
+        autocomplete="off"
+      />
+      <button id="searchBtn">Search</button>
+      <button id="compareBtn" title="Compare selected countries">Compare (0)</button>
+    </section>
+
+    <div id="error-msg" class="error hidden"></div>
+    <div id="loading" class="loading hidden">Loading...</div>
+
+    <section id="results" class="results-grid"></section>
+
+    <section id="compare-panel" class="compare-panel hidden">
+      <h2>Comparison</h2>
+      <div id="compare-table-wrap"></div>
+      <button id="clearCompare">Clear</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
