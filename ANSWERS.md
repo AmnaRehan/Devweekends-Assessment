@@ -33,6 +33,7 @@ I consulted Claude (claude.ai) for some explanations during this project.
 - Asked for a reminder of how `toLocaleString()` formats numbers, since I always forget the exact syntax.
 
 - Asked it to structure my readme file for better understanding of project structure
+
 **What I changed:**
 The original timeout code the AI suggested threw a generic `Error("Timeout")`. I changed the error message to something user-facing: *"Request timed out. The API might be slow. try again."* The AI's version was fine for a dev console but not something you'd show a user directly. I also moved the `clearTimeout(timer)` call to run on both success and failure paths, the original only cleared it on success, which would leave a dangling timer if the fetch failed for a non-timeout reason. It also gave me representation of project structure to put in readme.
 ---
