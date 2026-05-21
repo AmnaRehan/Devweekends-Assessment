@@ -1,0 +1,235 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #111;
+  min-height: 100vh;
+}
+
+header {
+  background: #c9a84c;
+  color: #fff;
+  padding: 24px 32px;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+header .subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.search-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.search-area input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 14px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #fff;
+  color: #111;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-area input:focus {
+  border-color: #c9a84c;
+}
+
+.search-area button {
+  padding: 10px 22px;
+  background: #c9a84c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-area button:hover {
+  background: #b8943d;
+}
+
+#compareBtn {
+  background: #fff;
+  color: #c9a84c;
+  border: 2px solid #c9a84c;
+}
+
+#compareBtn:hover {
+  background: #c9a84c;
+  color: #fff;
+}
+
+.error {
+  background: #fff5f5;
+  border-left: 3px solid #e94560;
+  color: #c00;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* --- Cards --- */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: transform 0.15s, border-color 0.15s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #c9a84c;
+}
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.card-body {
+  padding: 14px 16px;
+}
+
+.card-body h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.card-body p {
+  font-size: 0.83rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+.card-actions {
+  padding: 10px 16px;
+  display: flex;
+  justify-content: flex-end;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.card-actions button {
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  border: 1px solid #c9a84c;
+  background: transparent;
+  color: #c9a84c;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.card-actions button:hover,
+.card-actions button.selected {
+  background: #c9a84c;
+  color: #fff;
+}
+
+/* --- Compare panel --- */
+.compare-panel {
+  margin-top: 48px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 24px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.compare-panel h2 {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+#compare-table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #c9a84c;
+  color: #fff;
+  font-weight: 600;
+}
+
+td:first-child {
+  color: #999;
+  width: 130px;
+}
+
+#clearCompare {
+  margin-top: 16px;
+  padding: 8px 18px;
+  background: transparent;
+  color: #e94560;
+  border: 1px solid #e94560;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+}
+
+#clearCompare:hover {
+  background: #e94560;
+  color: white;
+}
